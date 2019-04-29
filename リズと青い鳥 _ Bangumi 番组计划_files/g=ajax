@@ -1,0 +1,8 @@
+var getObj=function(objId){return document.all?document.all[objId]:document.getElementById(objId);}
+function loadXML(url,cb){req=false;if(window.XMLHttpRequest){try{req=new XMLHttpRequest();}catch(e){req=false;}}else if(window.ActiveXObject){try{req=new ActiveXObject("Msxml2.XMLHTTP");}catch(e){try{req=new ActiveXObject("Microsoft.XMLHTTP");}catch(e){req=false;}}}
+if(req){req.onreadystatechange=cb;req.open("GET",url,true);req.send("");}}
+var initSubjectPrgs=function(subject_id){}
+var initBGMPrgs=function(subject_id){}
+var SubjectPrgsContentLoading=function(){_c=getObj("subject_prg_content");_c.style.padding="5px";_c.innerHTML='<span class="tip_i"><img src="/img/loadingAnimation.gif" align="absmiddle" /> 正在读取章节数据 ...</span>';}
+var EPBtnColor=function(ep_id,btn){_btn=getObj("prg_"+ep_id);if(EpBtn=='s'){_btn.className='';_btn.className="load-epinfo sepBtn"+btn;}else{_btn.className="load-epinfo epBtn"+btn;}}
+var switchHomeTab=function(tab,subject_id){if(tab=="subject_prg"){SubjectPrgsContentLoading();getPrgsInfoLatest(subject_id);}}
