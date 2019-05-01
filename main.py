@@ -1,11 +1,28 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import uuid
+import sys
 import datetime
+
+
+class Logger(object):
+    def __init__(self, fileN="Default.log"):
+        self.terminal = sys.stdout
+        self.log = open(fileN, "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+
+    def flush(self):
+        pass
 
 st_f = "http://bangumi.tv/subject/"
 st_b = "216371"
 st = st_f + st_b
+
+sys.stdout = Logger("content/" + st_b + ".txt")
 
 response = requests.get(st)
 response.encoding = response.apparent_encoding
@@ -73,7 +90,15 @@ for i in range(0, len(resChar)):
 
 print("\n---------制作信息---------\n")
 TargetIn = soup.find("div", {'class': 'infobox'})
-print("预览图： http:" + TargetIn.find("img").attrs.get("src") + "\n")
+TargetImg = "http:" + TargetIn.find("img").attrs.get("src")
+print("预览图： " + TargetImg + "\n")
+
+# TargetImg_down = requests.get(url=TargetImg)
+# # file_name = str(uuid.uuid4())+'.jpg'
+# file_name = st_b + "_MainImpressionImg" + '.jpg'
+# with open(file_name, 'wb') as fp:
+#     fp.write(TargetImg_down.content)
+
 Tag = TargetIn.find_all("li")
 for i in Tag:
     TagWeb = i.find_all('a')
@@ -82,6 +107,7 @@ for i in Tag:
         for j in TagWeb:
             print("bangumi.tv" + j['href'])
     print()
+
 
 
 print("\n---------评分信息---------\n")
@@ -198,6 +224,7 @@ for i in RelUserContent:
 print('\n---------爬取结束---------\n')
 now_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 print('爬取完成时间： ' + now_time)
+
 
 
 # ------ The Following Statement is Just Rubbish -----------
