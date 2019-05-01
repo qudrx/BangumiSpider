@@ -7,3 +7,6 @@
          []  add download module
          []  add mysql module
          []  add search module
+# Dependent Libraries :
+         bs4
+         request
