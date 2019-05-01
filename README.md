@@ -3,6 +3,7 @@
 
 # Plan : 
          [x] basic module
+         [x] restore module
          []  add download module
          []  add mysql module
          []  add search module
