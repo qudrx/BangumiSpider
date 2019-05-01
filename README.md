@@ -12,6 +12,6 @@
          bs4
          request
 
-# Known Bug :
+# Bug :
          the content in output file is not complete
          flush couldn't sovle this problem
