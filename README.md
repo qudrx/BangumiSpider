@@ -7,6 +7,11 @@
          [ ]  add download module
          [ ]  add mysql module
          [ ]  add search module
+         
 # Dependent Libraries :
          bs4
          request
+
+# Known Bug :
+         the content in output file is not complete
+         flush couldn't sovle this problem
