@@ -1,5 +1,5 @@
-# BangumiSpider
-# Version 1.0
+﻿# BangumiSpider
+# Version 1.1
 
 # Plan : 
          [✔] basic module

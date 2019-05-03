@@ -5,7 +5,7 @@ import uuid
 import sys
 import datetime
 
-
+# class Logger is created for documents output  
 class Logger(object):
     def __init__(self, fileN="Default.log"):
         self.terminal = sys.stdout
@@ -22,7 +22,7 @@ st_f = "http://bangumi.tv/subject/"
 st_b = "216371"
 st = st_f + st_b
 
-sys.stdout = Logger("content/" + st_b + ".txt")
+# sys.stdout = Logger("content/" + st_b + ".txt")
 
 response = requests.get(st)
 response.encoding = response.apparent_encoding
@@ -107,8 +107,6 @@ for i in Tag:
         for j in TagWeb:
             print("bangumi.tv" + j['href'])
     print()
-
-
 
 print("\n---------评分信息---------\n")
 TargetRank = soup.find("div", {'class': 'SidePanel png_bg'})
@@ -224,6 +222,10 @@ for i in RelUserContent:
 print('\n---------爬取结束---------\n')
 now_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 print('爬取完成时间： ' + now_time)
+
+
+
+# sys.stdout.flush()
 
 
 
